@@ -54,7 +54,10 @@ const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 const store = new MongoDBStore({
     url: dbUrl,
     secret,
-    touchAfter: 24 * 60 * 60
+    touchAfter: 24 * 60 * 60,
+    ttl:24 * 60 * 60 * 1000,
+        autoRemove: 'interval',
+        autoRemoveInterval: 10
 });
 
 store.on("error", function (e) {
